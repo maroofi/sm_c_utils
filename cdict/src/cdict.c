@@ -84,19 +84,25 @@ static void shuffle(WORD * table, unsigned int n){
 
 /**
  * @brief Initializes the Dictionary in the memory.
- * @param a pointer to the function that accept one parameter as void*
+ * @param free_func pointer to the function that free the `values` in the dictionary.
+ * @param copy_func pointer to the function that copy the `value` provided by the user.
  *  
  * This function initialize a dictionary context on success.
- * The input parameter is a pointer to the function written by the 
- * user to free the `value` member of the `NODE` structure.
+ *
+ * The input parameters are pointers to the functions written by the 
+ * user to free and copy the `value` member of the `NODE` structure.
+ *
  *
  * since users may store any type of data structure (string, integer or custum struct)
- * in the value of the dictionary, the code must know how to free() that value to prevent
+ * in the value part of the key-value record of the dictionary, the code must know how to free() that value to prevent
  * the memory leak. That's why you need to pass a pointer to the free function and we will
  * call this function inside cdict_free()
  *
+ * When the user stores a key-value pair to the dictionary, the dictionary will keep a copy of the value.
+ * Therefore, it needs to be passed a function pointer that can correctly copy the `value` data.
+ *
  * If you store basic types like int, float, char or double, then you can pass NULL
- * as the parameter.
+ * as the parameters.
  *
  * @return A pointer to #DICT structure on success or NULL on failure
  */
@@ -145,7 +151,8 @@ static unsigned int hashme(cdict_ctx * ctx, char * key){
     }
     unsigned long long int j;
     j=1;
-    for (unsigned int i=0; i< strlen(key); ++i){
+    unsigned int key_len = strlen(key);
+    for (unsigned int i=0; i< key_len; ++i){
         j *= (WORD)key[i];
         j = (j % (TABLE_SIZE)) & 0xFFFF;
     }

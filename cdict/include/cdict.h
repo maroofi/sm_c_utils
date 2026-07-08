@@ -16,9 +16,9 @@
 #define ERROR_NULL_VALUE_FOR_KEY        3      ///< Key can not be NULL
 #define ERROR_DICT_POINTER_IS_NULL      4      ///< invalid pointer to the dictionary structure
 
-#define TABLE_SIZE 0x10001
+#define TABLE_SIZE 0x100001
 
-typedef uint16_t  WORD;  ///< defines a fixed size (16 bit) cell.
+typedef uint32_t  WORD;  ///< defines a fixed size (16 bit) cell.
 
 typedef struct _NODE NODE, *PNODE;
 

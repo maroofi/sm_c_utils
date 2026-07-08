@@ -23,18 +23,18 @@ int main(int argc, char ** argv){
         random_val = rand();
         sprintf(key, "key_%d", random_val);
         // before insertion check if the key exists
-        if (cdict_has_key(new_dict, key)){
-            fprintf(stdout, "We already have this key: %s\n", key);
-            continue;
-        }
+        //if (cdict_has_key(new_dict, key)){
+        //    fprintf(stdout, "We already have this key: %s\n", key);
+        //    continue;
+        //}
         cdict_set(new_dict, key, (void *)"John Doe");
     }
     cdict_keylist * klst = NULL;
     klst = cdict_keys(new_dict, 0);
     fprintf(stdout, "We have %d keys\n", klst->len);
-    for (unsigned long int i=0; i< klst->len; ++i){
-        //fprintf(stdout, "%s -> %s\n", klst->lst[i], (char*)cdict_get(new_dict, klst->lst[i]));
-    }
+    //for (unsigned long int i=0; i< klst->len; ++i){
+    //    //fprintf(stdout, "%s -> %s\n", klst->lst[i], (char*)cdict_get(new_dict, klst->lst[i]));
+    //}
     cdict_free_keylist(klst, 0);
     cdict_free(new_dict);
     return 0;
