@@ -23,6 +23,14 @@ Only supports GET, POST and HEAD.
 doxygen Doxyfile
 ```
 
+#### Compile
+
+```c
+# in the root directory
+gcc -O2 -fPIC -shared -o libcrequests.so  ./src/crequests.c ./src/lua_crequests.c -I./include -I/usr/include/lua5.4 -llua5.4 -lm -lcurl
+```
+
+
 ### Example
 
 Here is the full example of how to use the library

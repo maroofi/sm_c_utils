@@ -91,7 +91,8 @@ CREQ_CTX * creq_init(void){
  * The **header** param will be copied by the library. So it's up to the user to free
  * the allocated memory for the passed parameter.
  *
- * @return There is no return value
+ * This function has no return value.
+ *
  * @code
  * int main(){
  *     CREQ_CTX * ctx = creq_init();
@@ -130,7 +131,7 @@ void creq_add_header(CREQ_CTX * ctx, char * header){
  * The __proxy__ parameter will be coppied to the internal structure.
  * So it's up the user to free the passed __proxy__ param.
  *
- * @return Nothing
+ * This function has no return value.
  *
  * @code
  * int main(){
@@ -161,7 +162,7 @@ void creq_set_proxy(CREQ_CTX * ctx, char * proxy){
  * Usually you don't need to even call this function. When you call creq_close(),
  * it will call this function internally if it's necessary.
  *
- * @return Nothing!
+ * This function has no return value.
  */
 static void creq_free_params(CREQ_CTX * ctx){
     CREQ_GET_PARAMS * params = ctx->request->params;
@@ -254,7 +255,7 @@ void creq_close(CREQ_CTX * ctx){
  * By default, the library will follow redirection up to 10 times.
  * You can pass 0 to this function to disable this behavior.
  *
- * @return Nothing!
+ * This function has no return value.
  *
  * @code
  * int main(){
@@ -285,7 +286,7 @@ void creq_set_allow_redirects(CREQ_CTX * ctx, int val){
  * It's not safe to disable it but if you know what you are doing, you can 
  * disable SSL verification by passing zero to this function.
  *
- * @return Nothing!
+ * This function has no return value.
  */
 void creq_set_verify(CREQ_CTX * ctx, int val){
     val = val?1:0;
@@ -331,7 +332,7 @@ static size_t creq_callback_routine(char *buff, size_t size, size_t nmemb, void 
  * connect to the server and transfer the data. If it takes more than that, the 
  * library will return timeout error.
  *
- * @return Nothing!
+ * This function has no return value.
  */
 void creq_set_timeout (CREQ_CTX * ctx, long timesec){
     ctx->request->request_timeout = timesec;
@@ -690,7 +691,7 @@ void creq_get(CREQ_CTX * ctx, char * url){
  * as long as the binary data is base64-encoded or any other human readable characters,
  * it should be fine to send it with this method.
  *
- *@return Nothing!
+ *This function has no return value.
  *
  * @code
  * 
@@ -752,7 +753,7 @@ void creq_post(CREQ_CTX * ctx, char * url){
  *
  * Look at the creq_get() doc for the example.
  *
- * @return Nothing!
+ * This function has no return value.
  */
 void creq_head(CREQ_CTX * ctx, char * url){
     if (!url)
@@ -783,7 +784,7 @@ void creq_head(CREQ_CTX * ctx, char * url){
  *
  * This is just an internal function to construct the GET/POST/HEAD parameters.
  * Users should not use this function.
- * @return Nothing!
+ * This function has no return value.
  */
 static void creq_construct_params(CREQ_CTX * ctx){
 
@@ -919,7 +920,8 @@ char * creq_error(CREQ_CTX * ctx){
  *
  * 'value' can never be NULL.
  *
- * @return Nothing!
+ * This function has no return value.
+ *
  * @code
  * int main(){
  *     CREQ_CTX * ctx = creq_init();
