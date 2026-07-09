@@ -31,7 +31,11 @@ gcc -O2 -fPIC -shared -o libcrequests.so  ./src/crequests.c ./src/lua_crequests.
 ```
 
 
+
 ### Example
+
+To see how to use creq in Lua, use [this example](https://github.com/maroofi/sm_c_utils/blob/main/creq/test/test_get_post.lua). You can run `test/post.py` to see the interaction with webserver.
+
 
 Here is the full example of how to use the library
 
