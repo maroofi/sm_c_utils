@@ -80,9 +80,10 @@ PSTR str_init(const char * val){
  * for the STR structure. It's important to call this function if you don't 
  * use the variable anymore since all the memories allocated by malloc function,
  * they won't be free just by leaving the function.
+ *
+ * This function has no return value!
  * 
  * @param pstr Pointer to the STR structure created by str_init()
- * @return There is no meaningful return value for this function
  */
 void str_free(PSTR pstr){
     if (NULL == pstr)
@@ -540,7 +541,7 @@ int str_startswith(PSTR pstr, const char * prefix){
 /**
  * @brief Returns 0 (#ERROR_OK) if pstr ends with suffix else 1
  * @param pstr pointer to the STR structure
- * @param seq substring to search for 
+ * @param suffix substring to search for 
  * @return 1 on success and 0 if fails
  */
 int str_endswith(PSTR pstr, const char * suffix){
