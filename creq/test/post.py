@@ -7,7 +7,7 @@ class post(object):
         pass
 
     @cherrypy.expose
-    def get_data(*args, **kwargs):
+    def post_data(*args, **kwargs):
         print(cherrypy.request.method)
         print("params: {}".format(kwargs))
         if cherrypy.request.method == "GET":
@@ -22,6 +22,14 @@ class post(object):
             print("body is: {}".format(body))
             print(json.loads(body))
             return "done"
+    # end def
+
+    @cherrypy.expose
+    def get_data(*args, **kwargs):
+        print(cherrypy.request.method)
+        print("params: {}".format(kwargs))
+        print("headers: {}".format(cherrypy.request.headers))
+        return "done"
     # end def
 # end class
 
